@@ -1,0 +1,2 @@
+Olav,123456,TDT4100,Objektorientert programmering,A
+Ola,111111,TDT4100,Objektorientert programmering,D

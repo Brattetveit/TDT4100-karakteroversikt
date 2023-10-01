@@ -1,0 +1,128 @@
+@startuml prosjekt-klassediagram
+class Institute {
+    -List<Character> charGrades
+    +addStudent(Student): void
+    +removeStudent(Student): void
+    +addCourse(Course): void
+    +removeCourse(Course): void
+    +getStudents(): List<Student>
+    +getCourses(): List<Course>
+    +getCourse(String): Course
+    +getStudent(String): Student
+    +handleComplain(char): char
+    +toString(): String
+}
+
+Interface Comparable<Course>{
+  + CompareTo(Course): int
+}
+
+class Course{
+  - List<Character> charGrades
+  - String courseName
+  - String courseCode
+  - Map<Character, Integer> gradeDistribution
+  - isValidCourseCode(String): boolean
+  + getCourseName(): String
+  + getCourseCode(): String
+  + getNumberOfStudents(): int
+  + getStudents(): Map<String, Character>
+  + getGradeDistribution(): Map<Character, Integer>
+  + getAverageGrade(): double
+  + getMedianGrade(): String
+  + getHighestGrade(): String
+  + getLowestGrade(): String
+  + addStudent(Student, char): void
+  + removeStudent(Student): void
+  + toString(): String
+  + hashCode(): int
+  + equals(Object): boolean
+
+}
+
+class Student {
+  - List<Character> charGrades
+  - String name
+  - String studentID
+  + getName(): String
+  + getStudentID(): String
+  + getCourses(): Map<Course, Character>
+  + getGrade(Course): char
+  + addCourse(Course, char): void
+  + removeCourse(Course): void
+  + getAverageGrade(): double
+  + getMedianGrade(): String
+  + getHighestGrade(): String
+  + getLowestGrade(): String
+  + toString(): String
+  + hashCode(): int
+  + equals(Object): boolean
+}
+
+class SaveHandler {
+  +save(String, String, Institute): void
+  +load(String, String): Institute
+}
+
+class ProjectController {
+  - ListView<Course> coursesList
+  - TextField nameForAddedCourse
+  - TextField codeForAddedCourse
+  - TextField nameForAddedStudent
+  - TextField studentIDForAddedStudent
+  - TextField studentIDForAddingGrade
+  - TextField textFieldAddedGrade
+  - Button addCourseButton
+  - Button removeCourseButton
+  - Button addStudentButton
+  - Button removeStudentButton
+  - Button addGradeButton
+  - Text studentAverageGrade
+  - Text studentMedianGrade
+  - Text studentHighestGrade
+  - Text studentLowestGrade
+  - Text studentGrades
+  - ComboBox<Student> studentChoices
+  - ListView<String> studentCourses
+  - Text courseGrades
+  - Text courseTotalAs
+  - Text courseTotalBs
+  - Text courseTotalCs
+  - Text courseTotalDs
+  - Text courseTotalEs
+  - Text courseTotalFs
+  - Text courseTotalStudents
+  - Text courseAverageGrade
+  - Text courseMedianGrade
+  - Text courseHighestGrade
+  - Text courseLowestGrade
+  - Button saveButton
+  - Button loadButton
+  - Button complainGradeButton
+
+  + initialize(): void
+  + addStudent(): void
+  + removeStudent(): void
+  + changeStudentShown(): void
+  + addCourse(): void
+  + removeCourse(): void
+  + addGrade(): void
+  + complainGrade(): void
+  - showAlert(): void
+  - updateStudentCourses(): void
+  - setDefaultStudentCourses(): void
+  - updateGradeDistribution(): void
+  - setDefaultGradeDistribution(): void
+  - updateCourses(): void
+}
+
+
+Course ..> Comparable: implements
+Institute --> "courses: *" Course
+Institute --> "students: *" Student
+ProjectController --> "institute: 1" Institute
+ProjectController --> "currentStudent: 1" Student
+ProjectController --> "currentCourse: 1" Course
+ProjectController --> "saveHandler: 1" SaveHandler
+Course "courses: *" -- "students: *" Student
+@enduml

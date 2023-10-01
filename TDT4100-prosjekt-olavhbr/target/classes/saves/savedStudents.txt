@@ -1,0 +1,4 @@
+Eirik,222222,TMA4115,Matte 3,A,TMA4100,Matte 1,B,TDT4109,ITGK,A,TDt4100,Objektorientert programmering,C
+Camilla,333333,TMA4115,Matte 3,C,TMA4100,Matte 1,B,TDT4109,ITGK,A,TDt4100,Objektorientert programmering,D
+Kristian,111111,TMA4115,Matte 3,D,TMA4100,Matte 1,B,TDT4109,ITGK,E,TDt4100,Objektorientert programmering,A
+Olav,123456,TMA4115,Matte 3,D,TMA4100,Matte 1,A,TDT4109,ITGK,C,TDt4100,Objektorientert programmering,A
